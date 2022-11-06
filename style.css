@@ -1,0 +1,171 @@
+:root {
+    --hue: 50;
+    --bg: linear-gradient(90deg,hsl(20, 39%, 33%) 20%,hsl(var(--hue), 41%, 30%));
+    --sect2-bg: #222;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+body {
+    background: var(--sect2-bg);
+}
+.main {
+    height: 500px;
+    background: var(--bg);
+}
+
+
+.curve2 {
+    height: 500px;
+    position: absolute;
+    border-radius: calc(20% - 4vw);
+    width: 100%;
+    transform: translateY(-50%);
+    padding: 50px;
+    background: var(--sect2-bg);
+}
+
+.main2 {
+    width: 100%;
+    min-height: 400px;
+    background: var(--sect2-bg);
+    padding-bottom: 50px;
+    background: transparent;
+}
+
+
+.bigtext {
+    display: inline-block;
+    background: linear-gradient(-90deg, #2224, #3345);
+    border-radius: 20px;
+    padding: 12px;
+    max-width: 500px;
+    width: 80%;
+    font-size: 32px;
+    font-weight: bold;
+    color: hsl(127, 71%, 76%);
+}
+
+.ted {
+    letter-spacing: 2px;
+}
+
+.smalltext {
+    background: linear-gradient(-90deg, #2224, #3345);
+    padding: 8px;
+    display: inline-block;
+    font-style: italic;
+    color: #c0c0c0;
+    font-size: 32px;
+    border-radius: 20px;
+}   
+
+
+.zbyva {
+    font-size: 32px;
+    font-weight: 400;
+    color: hsl(127, 20%, 65%);
+} 
+.from {
+    color: #ababab;
+    font-size: 24px;
+}
+
+.big {
+    display: block;
+    text-align: center;
+    width: 80%;
+}
+.inmain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-25%);
+}
+
+.title {
+    color: #fefeff;
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.container {
+    
+}
+
+.cudliky {
+    display: inline-flex;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cudliky2 {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.cudl {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    color: #bebebb;
+    background: #fff1;
+    border: none;
+    border-radius: 8px;
+    padding: 15px 50px;
+    font-size: 28px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 250ms;
+}
+
+.rozdelovac1 {
+    width: 100%;
+    height: 3px;
+    background: #0004;
+    margin: calc(40px * 2) 0;
+    display: block;
+}
+
+.cudl:hover {
+    color: #fff;
+}
+
+.btnd {
+    font-size: 23px;
+    color: #fefeff;
+    display: inline-block;
+    width: 100%;
+    max-width: 200px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    padding: 18px 0;
+}
+
+.cil {
+    font-size: 20px;
+    border-radius: 0;
+    padding: 8px 18px;
+    border-bottom: hsl(208, 20%, 29%) 4px solid;
+}
+.cil:focus {
+    outline: hsl(207, 17%, 63%) 2px solid;
+}
+
+.nastavit {
+    background: hsl(208, 20%, 29%);
+    cursor: pointer;
+    transition: 250ms;
+}   
+.nastavit:hover {
+    background: hsl(208, 60%, 29%);
+}

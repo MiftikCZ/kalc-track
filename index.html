@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalc Track</title>
+    <link rel="stylesheet" href="frawem/index.css">
+    <script src="./frawem/main.js"></script>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+</head>
+
+<body>
+    <section class="main">
+        <div class="inmain">
+            <div class="big">
+                <div class="bigtext">
+                    <variable v="dneska" class="ted">200</variable>
+                    <br>
+                    <span class="zbyva">z <variable v="cil">2000</variable></span>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <div class="curve2">
+        <section class="main2">
+            <div class="title">
+                <span class="material-symbols-outlined">add</span>
+                Přidat
+            </div>
+            <div class="container">
+                <div class="cudliky">
+                    <button class="cudl">50</button>
+                    <button class="cudl">100</button>
+                    <button class="cudl">200</button>
+                    <button class="cudl">500</button>
+                </div>
+            </div>
+            <span class="rozdelovac1"></span>
+            <div class="title">
+                <span class="material-symbols-outlined">remove</span>
+                Odebrat
+            </div>
+            <div class="container">
+                <div class="cudliky">
+                    <button class="cudl" neg>50</button>
+                    <button class="cudl" neg>100</button>
+                    <button class="cudl" neg>200</button>
+                    <button class="cudl" neg>500</button>
+                </div>
+            </div>
+            <span class="rozdelovac1"></span>
+            <div class="title">
+                Přidat flexibilně
+            </div>
+            <div class="container">
+                <div class="cudliky cudliky2">
+                    <input type="text" class="btnd cil" id="na100g" placeholder="data na 100g...">
+                    <p style="margin: 16px;"></p>
+                    <input type="text" class="btnd cil" id="porce" placeholder="porce v g">
+                    <p style="margin: 16px;"></p>
+                    <button class="btnd nastavit" onclick="setDneskaElement()">
+                        nastavit
+                    </button>
+                </div>
+            </div>
+            <span class="rozdelovac1"></span>
+            <div class="title">
+                Denní cíl
+            </div>
+            <div class="container">
+                <div class="cudliky cudliky2">
+                    <input type="text" class="btnd cil" id="cil" placeholder="př: 2000">
+                    <p style="margin: 16px;"></p>
+                    <button class="btnd nastavit" onclick="setCil()">
+                        nastavit
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="main2">
+
+    </div>
+    <script>
+        function getDneska() {
+            let date = new Date()
+            let dt = date.getUTCDate().toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
+            if (!data.get("dneska" + dt)) data.save("dneska" + dt, 0)
+            let vt = parseInt(data.get("dneska" + dt)) || 0
+            return vt
+        }
+        function setDneska(newValue) {
+            if(isNaN(newValue)) return
+            let date = new Date()
+            let dt = date.getUTCDate().toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
+            let vt = parseInt(data.get("dneska" + dt)) || 0
+            data.save("dneska" + dt, newValue)
+        }
+        function addDneska(add) {
+            if(isNaN(add)) return
+            let date = new Date()
+            let dt = date.getUTCDate().toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
+            let vt = parseInt(data.get("dneska" + dt)) || 0
+            data.save("dneska" + dt, vt + add)
+        }
+        function setCil() {
+            let val = document.getElementById("cil").value 
+            if(!val || isNaN(val)) return
+            data.save("cil",val)
+            fr.set("cil",val)
+            document.getElementById("cil").value = ""
+        }
+        function setDneskaElement() {
+            let na100g = document.getElementById("na100g").value 
+            let porce = document.getElementById("porce").value 
+            if(!na100g || isNaN(na100g)) return
+            if(!porce || isNaN(porce)) return
+            addDneska((na100g/100)*porce)
+            document.getElementById("na100g").value  = ""
+            document.getElementById("porce").value  = ""
+            reload()
+        }
+        function reload() {
+            if(!data.get("cil")) {
+                data.save("cil",2000)
+            }
+            fr.set("cil",data.get("cil"))
+            fr.set("dneska", getDneska())
+        }
+        var fr = new frawem()
+        reload()
+        document.querySelectorAll(".cudl").forEach(e => {
+            e.addEventListener("click", () => {
+                let val = parseInt(e.innerHTML || "100")
+                if (e.hasAttribute("neg")) val = -val
+                addDneska(val)
+                reload()
+            })
+        })
+    </script>
+</body>
+
+</html>
